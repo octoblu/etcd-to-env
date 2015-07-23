@@ -8,5 +8,5 @@ if [ $? -ne 0 ]; then
 fi
 
 for KEY in ${KEYS}; do
-  echo `basename ${KEY}`=\"`etcdctl get ${KEY}`\"
+  echo `basename ${KEY}`=`etcdctl get ${KEY}`
 done
