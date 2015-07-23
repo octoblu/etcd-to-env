@@ -1,0 +1,12 @@
+#!/bin/bash
+BASEKEY=$1
+
+KEYS=`etcdctl ls --recursive ${BASEKEY} 2>/dev/null`
+
+if [ $? -ne 0 ]; then
+  exit 1
+fi
+
+for KEY in ${KEYS}; do
+  echo `basename ${KEY}`=\"`etcdctl get ${KEY}`\"
+done
